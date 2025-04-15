@@ -27,8 +27,8 @@ class SearchTableViewController: UITableViewController, NationSelectDelegate, UI
         minAge.delegate = self
         maxAge.delegate = self
         
-        addDoneButtonOnKeyboard(textField: minAge)
-        addDoneButtonOnKeyboard(textField: maxAge)
+        addDoneButtonOnKeyboard(textField: minAge, infoText: "possible range from 1 to 119")
+        addDoneButtonOnKeyboard(textField: maxAge, infoText: "possible range from 1 to 119")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -40,7 +40,7 @@ class SearchTableViewController: UITableViewController, NationSelectDelegate, UI
     
     
     @IBAction func correctTextfield(_ sender: UITextField) {
-        guard let text = sender.text, let value = Int(text), (0...120).contains(value) else {
+        guard let text = sender.text, let value = Int(text), (1...119).contains(value) else {
             sender.text = ""
             return
         }
@@ -50,13 +50,19 @@ class SearchTableViewController: UITableViewController, NationSelectDelegate, UI
         navigationController?.popViewController(animated: true)
     }
     
-    func addDoneButtonOnKeyboard(textField: UITextField) {
+    func addDoneButtonOnKeyboard(textField: UITextField, infoText: String) {
         let doneToolbar: UIToolbar = UIToolbar()
         doneToolbar.sizeToFit()
         
+        let label = UILabel()
+        label.text = infoText
+        label.textColor = .systemRed
+        label.font = .systemFont(ofSize: 13)
+        
+        let labelItem = UIBarButtonItem(customView: label)
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonAction))
-        doneToolbar.items = [flexSpace, doneButton]
+        doneToolbar.items = [labelItem, flexSpace, doneButton]
         textField.inputAccessoryView = doneToolbar
     }
     
