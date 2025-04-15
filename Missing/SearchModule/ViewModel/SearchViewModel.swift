@@ -43,7 +43,7 @@ class SearchViewModel {
         } else if genderIndex == 2 {
             queryItems.append(URLQueryItem(name: "sexId", value: "F"))
         }
-        if let minAge = minAge, minAge > 0 && minAge < 100 {
+        if let minAge = minAge, minAge > 0 && minAge < 120 {
             queryItems.append(URLQueryItem(name: "ageMin", value: String(minAge)))
         }
         if let maxAge = maxAge, maxAge > 0 && maxAge < 120 {
