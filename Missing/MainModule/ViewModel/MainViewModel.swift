@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-@MainActor
+//@MainActor
 final class MainViewModel: ObservableObject {
     @Published private(set) var persons: [Notice] = []
     @Published private(set) var imagesData: [String: Data?] = [:]
@@ -18,6 +18,7 @@ final class MainViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let dataManager = CoreDataManager.shared
     let countries = Countries()
+    var searchQuery: [URLQueryItem] = []
     
     private var nextUrlString: String?
     private var isLoading = false
@@ -26,7 +27,7 @@ final class MainViewModel: ObservableObject {
         guard !isLoading else { return }
         isLoading = true
         
-        guard let url = try? Network.shared.createURL(by: Network.shared.searchQuery) else {
+        guard let url = try? Network.shared.createURL(by: searchQuery) else {
             message = "Invalid URL."
             isLoading = false
             return
@@ -71,7 +72,11 @@ final class MainViewModel: ObservableObject {
             guard let link = person.links.thumbnail?.href else { return }
             Network.shared.fetchImageData(from: link)
                 .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { _ in },
+                .sink(receiveCompletion: { completion in
+                    if case let .failure(error) = completion {
+                        print("Image dowloaded failed: \(error)")
+                    }
+                },
                       receiveValue: { [weak self] data in
                     self?.imagesData[person.entityID] = data
                 })

@@ -11,7 +11,6 @@ enum NetworkError: Error {
 class Network {
     static let shared = Network()
     private let session: URLSession
-    var searchQuery: [URLQueryItem] = []
     
     private init() {
         self.session = URLSession(configuration: .default)
@@ -32,6 +31,7 @@ class Network {
     }
     
     func fetchPersons(from url: URL) -> AnyPublisher<Notices, Error> {
+        print(url)
         return session.dataTaskPublisher(for: url)
             .map { $0.data }
             .mapError { $0 as Error }

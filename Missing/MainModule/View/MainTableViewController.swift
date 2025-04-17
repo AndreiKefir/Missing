@@ -48,7 +48,7 @@ final class MainTableViewController: UITableViewController, SearchFilterDelegate
     }
 
     func didUpdateSearchQuery(_ queryItems: [URLQueryItem]) {
-        Network.shared.searchQuery = queryItems
+        viewModel.searchQuery = queryItems
         viewModel.loadPersons()
     }
     

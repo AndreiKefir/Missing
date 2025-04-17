@@ -10,12 +10,12 @@ import Foundation
 class SearchViewModel {
     private let countries: Countries
     
-    var forename: String?
-    var familyName: String?
-    var genderIndex: Int = 0   // 0: All, 1: Male, 2: Female
-    var minAge: Int?
-    var maxAge: Int?
-    var nationality: String = "All"
+    @Published var forename: String?
+    @Published var familyName: String?
+    @Published var genderIndex: Int = 0   // 0: All, 1: Male, 2: Female
+    @Published var minAge: Int?
+    @Published var maxAge: Int?
+    @Published var nationality: String = "All"
         
     init(countries: Countries = Countries()) {
         self.countries = countries
@@ -23,10 +23,7 @@ class SearchViewModel {
     
     func filterCountries(with searchText: String) -> [String] {
         let allCountries = countries.countriesList.map { $0.0 }
-        if searchText.isEmpty {
-            return allCountries
-        }
-        return allCountries.filter { $0.lowercased().contains(searchText.lowercased()) }
+        return searchText.isEmpty ? allCountries : allCountries.filter { $0.lowercased().contains(searchText.lowercased()) }
     }
     
     func createSearchQuery() -> [URLQueryItem] {

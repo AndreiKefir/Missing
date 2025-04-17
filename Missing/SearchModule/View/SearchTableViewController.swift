@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class SearchTableViewController: UITableViewController, NationSelectDelegate, UITextFieldDelegate {
     private var viewModel = SearchViewModel()
     weak var delegate: SearchFilterDelegate?
+    private var cancellables = Set<AnyCancellable>()
     
     @IBOutlet weak var forename: UITextField!
     @IBOutlet weak var familyName: UITextField!
@@ -22,6 +24,8 @@ class SearchTableViewController: UITableViewController, NationSelectDelegate, UI
         super.viewDidLoad()
         title = "Search"
         
+        setupBindings()
+        
         forename.delegate = self
         familyName.delegate = self
         minAge.delegate = self
@@ -33,11 +37,39 @@ class SearchTableViewController: UITableViewController, NationSelectDelegate, UI
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        sendProperties()
+        viewModel.genderIndex = genderSegmentControl.selectedSegmentIndex
         let queryItems = viewModel.createSearchQuery()
         delegate?.didUpdateSearchQuery(queryItems)
     }
     
+    private func setupBindings() {
+        forename.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        familyName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        minAge.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        maxAge.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        
+        viewModel.$nationality
+            .sink { [weak self] nationality in
+                self?.nationalityLabel.text = nationality
+            }
+            .store(in: &cancellables)
+        
+        viewModel.$genderIndex
+            .sink { [weak self] genderIndex in
+                self?.genderSegmentControl.selectedSegmentIndex = genderIndex
+            }
+            .store(in: &cancellables)
+    }
+    
+    @objc func textFieldChanged(_ sender: UITextField) {
+        switch sender {
+        case forename: viewModel.forename = sender.text ?? nil
+        case familyName: viewModel.familyName = sender.text ?? nil
+        case minAge: viewModel.minAge = Int(sender.text ?? "")
+        case maxAge: viewModel.maxAge = Int(sender.text ?? "")
+        default : break
+        }
+    }
     
     @IBAction func correctTextfield(_ sender: UITextField) {
         guard let text = sender.text, let value = Int(text), (1...119).contains(value) else {
@@ -81,15 +113,6 @@ class SearchTableViewController: UITableViewController, NationSelectDelegate, UI
             vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
         }
-    }
-    
-    func sendProperties() {
-        viewModel.forename = forename.text
-        viewModel.familyName = familyName.text
-        viewModel.genderIndex = genderSegmentControl.selectedSegmentIndex
-        viewModel.minAge = Int(minAge.text ?? "0") ?? nil
-        viewModel.maxAge = Int(maxAge.text ?? "0") ?? nil
-        viewModel.nationality = nationalityLabel.text ?? "All"
     }
     
     func didSelectNation(_ nation: String) {

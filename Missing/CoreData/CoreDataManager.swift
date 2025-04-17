@@ -38,10 +38,6 @@ final class CoreDataManager {
         }
     }
 
-//    func savePerson(_ person: Person) {
-//        saveContext()
-//    }
-
     func fetchPerson(by id: String?) -> Person? {
         guard let id = id else { return nil }
         let request: NSFetchRequest<Person> = Person.fetchRequest()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Countries {
+struct Countries {
     var countriesList: [(name: String, isoCode: String)] = [
         ("All", ""),
         ("Afghanistan", "AF"),

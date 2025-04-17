@@ -76,7 +76,6 @@ class PersonCell: UITableViewCell {
         nameLabel.text = nil
         infoLabel.text = nil
         personImageView.image = UIImage(named: "noPhoto")
-//        personImageView.image = nil
     }
     
     func updateImage(_ image: UIImage?) {
@@ -86,10 +85,6 @@ class PersonCell: UITableViewCell {
     func configure(id: String, name: String?, forename: String?, nationality: String?, dateOfBirth: String?, image: UIImage?) {
         nameLabel.text = "\(name ?? "")\n\(forename ?? "")"
         infoLabel.text = "\(dateOfBirth ?? "")\n\(nationality ?? "")"
-        if let image = image {
-            personImageView.image = image
-        } else {
-            personImageView.image = UIImage(named: "noPhoto")
-        }
+        personImageView.image = image ?? UIImage(named: "noPhoto")
     }
 }
