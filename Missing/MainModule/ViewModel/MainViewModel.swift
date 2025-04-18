@@ -16,24 +16,29 @@ final class MainViewModel: ObservableObject {
     @Published var savedPersons: [Person] = []
     
     private var cancellables = Set<AnyCancellable>()
-    private let dataManager = CoreDataManager.shared
+    private let dataManager: CoreDataManagerProtocol
+    private let network: NetworkProtocol
     let countries = Countries()
     var searchQuery: [URLQueryItem] = []
-    
     private var nextUrlString: String?
     private var isLoading = false
+    
+    init(dataManager: CoreDataManagerProtocol = CoreDataManager.shared, network: NetworkProtocol = Network.shared) {
+        self.dataManager = dataManager
+        self.network = network
+    }
     
     func loadPersons() {
         guard !isLoading else { return }
         isLoading = true
         
-        guard let url = try? Network.shared.createURL(by: searchQuery) else {
+        guard let url = try? network.createURL(by: searchQuery) else {
             message = "Invalid URL."
             isLoading = false
             return
         }
         
-        Network.shared.fetchPersons(from: url)
+        network.fetchPersons(from: url)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 self?.isLoading = false
@@ -54,7 +59,7 @@ final class MainViewModel: ObservableObject {
         guard !isLoading, let nextUrlString = nextUrlString, let url = URL(string: nextUrlString) else { return }
         isLoading = true
         
-        Network.shared.fetchPersons(from: url)
+        network.fetchPersons(from: url)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 self?.isLoading = false
@@ -70,7 +75,7 @@ final class MainViewModel: ObservableObject {
     func loadImages(for persons: [Notice]) {
         persons.forEach { person in
             guard let link = person.links.thumbnail?.href else { return }
-            Network.shared.fetchImageData(from: link)
+            network.fetchImageData(from: link)
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { completion in
                     if case let .failure(error) = completion {
@@ -89,7 +94,7 @@ final class MainViewModel: ObservableObject {
             print("Person already saved.")
             return
         }
-        let person = Person(context: dataManager.viewContext)
+        let person = dataManager.createPerson()
         person.personID = notice.entityID
         person.familyName = notice.name
         person.forename = notice.forename
@@ -116,7 +121,6 @@ final class MainViewModel: ObservableObject {
     func updateImagesData(for personID: String, data: Data) {
         imagesData[personID] = data
     }
-    
     
     func calculateAge(from birthDate: String?) -> String {
         guard let birthDate = birthDate else { return "" }

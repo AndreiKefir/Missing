@@ -10,9 +10,19 @@ import Combine
 
 final class MainTableViewController: UITableViewController, SearchFilterDelegate, UITableViewDataSourcePrefetching {
     
-    private let viewModel = MainViewModel()
+    private let viewModel: MainViewModel
     private var cancellables = Set<AnyCancellable>()
-
+    
+    init(viewModel: MainViewModel = MainViewModel()) {
+        self.viewModel = viewModel
+        super.init(style: .plain)
+    }
+    
+    required init?(coder: NSCoder) {
+        self.viewModel = MainViewModel()
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
