@@ -7,17 +7,17 @@ class DetailViewModel {
     @Published private(set) var personData: [[(String?, String?)]] = [[], [], [], []]
     
     private var cancellables = Set<AnyCancellable>()
-    
+    private let network: NetworkProtocol
     let personID: String
-    
     private let countries = Countries()
     
-    init(personID: String) {
+    init(personID: String, network: NetworkProtocol = Network.shared) {
         self.personID = personID
+        self.network = network
     }
     
     func loadPersonDetails() {
-        Network.shared.fetchPersonDetails(for: personID)
+        network.fetchPersonDetails(for: personID)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -32,7 +32,7 @@ class DetailViewModel {
     }
     
     func loadPersonImages() {
-        Network.shared.fetchPersonImagesLink(for: personID)
+        network.fetchPersonImagesLink(for: personID)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in },
                   receiveValue: { imagesLink in
@@ -43,7 +43,7 @@ class DetailViewModel {
     
     func loadImageData(from personImages: [PersonImage]) {
         for image in personImages {
-            Network.shared.fetchImageData(from: image.imageLinks.linksSelf.href)
+            network.fetchImageData(from: image.imageLinks.linksSelf.href)
                 .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { completion in
                     switch completion {

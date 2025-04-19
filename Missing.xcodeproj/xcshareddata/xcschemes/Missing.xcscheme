@@ -36,8 +36,19 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "198B6A262DAFCC3B00FC6942"
-               BuildableName = "Tests.xctest"
-               BlueprintName = "Tests"
+               BuildableName = "MainViewModelTests.xctest"
+               BlueprintName = "MainViewModelTests"
+               ReferencedContainer = "container:Missing.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "199F4F0E2DB6B3A500F7302E"
+               BuildableName = "DetailViewModelTests.xctest"
+               BlueprintName = "DetailViewModelTests"
                ReferencedContainer = "container:Missing.xcodeproj">
             </BuildableReference>
          </TestableReference>

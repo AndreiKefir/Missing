@@ -12,13 +12,15 @@ import Combine
 class MockNetwork: NetworkProtocol {
     var shouldFail = false
     var mockPersons: Notices = Notices(total: 0, embedded: Embedded(notices: []), links: PeopleLinks(next: nil))
-    var mockImageData: Data = Data("mockImage".utf8)
+    var mockImageData: Data!
+    var mockPersonDetails: PersonDetails!
+    var mockPersonImagesLink: PersonImageslink!
     
     func createURL(by queries: [URLQueryItem]) throws -> URL {
         return URL(string: "https://example.com")!
     }
     
-    func fetchPersons(from url: URL) -> AnyPublisher<Missing.Notices, any Error> {
+    func fetchPersons(from url: URL) -> AnyPublisher<Notices, Error> {
         if shouldFail {
             return Fail(error: URLError(.badServerResponse)).eraseToAnyPublisher()
         } else {
@@ -28,7 +30,7 @@ class MockNetwork: NetworkProtocol {
         }
     }
     
-    func fetchImageData(from urlString: String) -> AnyPublisher<Data, any Error> {
+    func fetchImageData(from urlString: String) -> AnyPublisher<Data, Error> {
         if shouldFail {
             return Fail(error: URLError(.cannotLoadFromNetwork)).eraseToAnyPublisher()
         } else {
@@ -37,7 +39,20 @@ class MockNetwork: NetworkProtocol {
                 .eraseToAnyPublisher()
         }
     }
+    
+    func fetchPersonDetails(for id: String) -> AnyPublisher<PersonDetails, Error> {
+        Just(mockPersonDetails)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchPersonImagesLink(for id: String) -> AnyPublisher<PersonImageslink, any Error> {
+        Just(mockPersonImagesLink)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
+    }
 }
+
 
 class MockCoreDataManager: CoreDataManagerProtocol {
     var savedPersons: [Person] = []

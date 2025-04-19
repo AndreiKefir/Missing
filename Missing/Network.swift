@@ -7,6 +7,9 @@ protocol NetworkProtocol {
     func createURL(by queries: [URLQueryItem]) throws -> URL
     func fetchPersons(from url: URL) -> AnyPublisher<Notices, Error>
     func fetchImageData(from urlString: String) -> AnyPublisher<Data, Error>
+    func fetchPersonDetails(for id: String) -> AnyPublisher<PersonDetails, Error>
+    func fetchPersonImagesLink(for id: String) -> AnyPublisher<PersonImageslink, Error>
+    
 }
 
 enum NetworkError: Error {
