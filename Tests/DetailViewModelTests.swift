@@ -29,7 +29,7 @@ final class DetailViewModelTests: XCTestCase {
     }
 
     func testLoadpersonDetails_ShouldPopulatePersonData() throws {
-        let personDetails = PersonDetails(country: nil, dateOfBirth: "2000/01/01", motherName: nil, countriesLikelyToBeVisited: nil, motherForename: nil, nationalities: ["US"], eyesColorsID: nil, sexID: "M", forename: "John", countryOfBirthID: nil, issuingCountry: "UK", hairsID: nil, place: nil, languagesSpokenIDS: nil, dateOfEvent: nil, height: 1.88, fatherForename: nil, distinguishingMarks: nil, birthName: nil, weight: nil, entityID: "1234-1234", placeOfBirth: nil, fatherName: nil, name: "Doe", links: Links(images: downloadLink(href: "https://example.com/1234-1234/images")))
+        let personDetails = PersonDetails(country: "UK", dateOfBirth: "1990/01/01", motherName: "Jolie", countriesLikelyToBeVisited: ["US"], motherForename: "Jolie", nationalities: ["US"], eyesColorsID: ["BRO"], sexID: "M", forename: "John", countryOfBirthID: "UK", issuingCountry: "UK", hairsID: ["BRO"], place: "Somewhere", languagesSpokenIDS: ["UK"], dateOfEvent: "2000/01/01", height: 1.88, fatherForename: "Jack", distinguishingMarks: "someMarks", birthName: "John", weight: 0.60, entityID: "1234-1234", placeOfBirth: "somewhere", fatherName: "Jack", name: "Doe", links: Links(images: downloadLink(href: "https://example.com/1234-1234/images")))
         mockNetwork.mockPersonDetails = personDetails
         
         let expectation = XCTestExpectation(description: "Person details loaded")

@@ -52,6 +52,17 @@
                ReferencedContainer = "container:Missing.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "199F4FB92DB7A0FC00F7302E"
+               BuildableName = "SearchViewModelTests.xctest"
+               BlueprintName = "SearchViewModelTests"
+               ReferencedContainer = "container:Missing.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

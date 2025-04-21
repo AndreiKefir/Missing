@@ -11,7 +11,7 @@ import Combine
 @testable import Missing
 
 final class MainViewModelTests: XCTestCase {
-    var viewModel: MainViewModel!
+    var sut: MainViewModel!
     var mockNetwork: MockNetwork!
     var mockDataManager: MockCoreDataManager!
     var cancellables: Set<AnyCancellable>!
@@ -19,12 +19,12 @@ final class MainViewModelTests: XCTestCase {
     override func setUpWithError() throws {
         mockNetwork = MockNetwork()
         mockDataManager = MockCoreDataManager()
-        viewModel = MainViewModel(dataManager: mockDataManager, network: mockNetwork)
+        sut = MainViewModel(dataManager: mockDataManager, network: mockNetwork)
         cancellables = []
     }
     
     override func tearDownWithError() throws {
-        viewModel = nil
+        sut = nil
         mockNetwork = nil
         mockDataManager = nil
         cancellables = nil
@@ -38,7 +38,7 @@ final class MainViewModelTests: XCTestCase {
                                           links: PeopleLinks(next: nil)
         )
         
-        viewModel.$persons
+        sut.$persons
             .dropFirst()
             .sink { persons in
                 XCTAssertEqual(persons.count, 1)
@@ -47,7 +47,7 @@ final class MainViewModelTests: XCTestCase {
             }
             .store(in: &cancellables)
         
-        viewModel.loadPersons()
+        sut.loadPersons()
         
         wait(for: [expectation], timeout: 1.0)
     }
@@ -56,7 +56,7 @@ final class MainViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Error message published")
         mockNetwork.shouldFail = true
         
-        viewModel.$message
+        sut.$message
             .dropFirst()
             .sink { message in
                 XCTAssertNotNil(message)
@@ -65,7 +65,7 @@ final class MainViewModelTests: XCTestCase {
             }
             .store(in: &cancellables)
         
-        viewModel.loadPersons()
+        sut.loadPersons()
         
         wait(for: [expectation], timeout: 1.0)
     }
@@ -102,14 +102,14 @@ final class MainViewModelTests: XCTestCase {
         let referenceDate = Date()
         let expectedAge = Calendar.current.dateComponents([.year], from: birthDate, to: referenceDate).year ?? 0
 
-        let result = viewModel.calculateAge(from: birthDateString)
+        let result = sut.calculateAge(from: birthDateString)
 
         XCTAssertEqual(result, "\(expectedAge) years old")
     }
     
     func testCalculateAge_withInvalidDate() throws {
-        XCTAssertEqual(viewModel.calculateAge(from: "wrong format"), "")
-        XCTAssertEqual(viewModel.calculateAge(from: nil), "")
+        XCTAssertEqual(sut.calculateAge(from: "wrong format"), "")
+        XCTAssertEqual(sut.calculateAge(from: nil), "")
     }
     
     func testPerformanceExample() throws {
