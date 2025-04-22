@@ -25,6 +25,7 @@ final class MainTableViewController: UITableViewController, SearchFilterDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupUI()
         bindViewModel()
         viewModel.loadPersons()
@@ -34,6 +35,11 @@ final class MainTableViewController: UITableViewController, SearchFilterDelegate
         title = "Missing People"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(openSearchVC))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(openSavedPersons))
+        
+        tableView.accessibilityIdentifier = AccessibilityIdentifier.mainTable.rawValue
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = AccessibilityIdentifier.openSearchButton.rawValue
+        navigationItem.leftBarButtonItem?.accessibilityIdentifier = AccessibilityIdentifier.bookmarksButton.rawValue
+        
         tableView.register(PersonCell.self, forCellReuseIdentifier: PersonCell.reuseIdentifier)
         tableView.prefetchDataSource = self
     }
