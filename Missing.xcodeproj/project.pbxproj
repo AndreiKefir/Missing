@@ -56,23 +56,25 @@
 		199F4F182DB6B3B100F7302E /* Exceptions for "Tests" folder in "MainViewModelTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				DetailViewModelTests.swift,
-				SearchViewModelTests.swift,
+				UITests/UITests.swift,
+				UITests/UITestsLaunchTests.swift,
+				UnitTests/DetailViewModelTests.swift,
+				UnitTests/SearchViewModelTests.swift,
 			);
 			target = 198B6A262DAFCC3B00FC6942 /* MainViewModelTests */;
 		};
 		199F4F192DB6B3B100F7302E /* Exceptions for "Tests" folder in "DetailViewModelTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				DetailViewModelTests.swift,
-				Mocks.swift,
+				UnitTests/DetailViewModelTests.swift,
+				UnitTests/Mocks.swift,
 			);
 			target = 199F4F0E2DB6B3A500F7302E /* DetailViewModelTests */;
 		};
 		199F4FC32DB7A10400F7302E /* Exceptions for "Tests" folder in "SearchViewModelTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				SearchViewModelTests.swift,
+				UnitTests/SearchViewModelTests.swift,
 			);
 			target = 199F4FB92DB7A0FC00F7302E /* SearchViewModelTests */;
 		};
@@ -80,6 +82,14 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Constants/AccessibilityIdentifier.swift,
+			);
+			target = 199F50692DB8EE4C00F7302E /* UITests */;
+		};
+		199F54D42DBA5A7D00F7302E /* Exceptions for "Tests" folder in "UITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				UITests/UITests.swift,
+				UITests/UITestsLaunchTests.swift,
 			);
 			target = 199F50692DB8EE4C00F7302E /* UITests */;
 		};
@@ -101,13 +111,9 @@
 				199F4F182DB6B3B100F7302E /* Exceptions for "Tests" folder in "MainViewModelTests" target */,
 				199F4F192DB6B3B100F7302E /* Exceptions for "Tests" folder in "DetailViewModelTests" target */,
 				199F4FC32DB7A10400F7302E /* Exceptions for "Tests" folder in "SearchViewModelTests" target */,
+				199F54D42DBA5A7D00F7302E /* Exceptions for "Tests" folder in "UITests" target */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		199F506B2DB8EE4C00F7302E /* UITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -156,7 +162,6 @@
 			children = (
 				1935FE5C2D9C3488007C6B6F /* Missing */,
 				198B6A282DAFCC3B00FC6942 /* Tests */,
-				199F506B2DB8EE4C00F7302E /* UITests */,
 				1935FE5B2D9C3488007C6B6F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -274,9 +279,6 @@
 			dependencies = (
 				199F50712DB8EE4C00F7302E /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				199F506B2DB8EE4C00F7302E /* UITests */,
-			);
 			name = UITests;
 			packageProductDependencies = (
 			);
@@ -324,6 +326,9 @@
 			);
 			mainGroup = 1935FE512D9C3488007C6B6F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				199F54CC2DBA59DE00F7302E /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1935FE5B2D9C3488007C6B6F /* Products */;
 			projectDirPath = "";
@@ -865,6 +870,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		199F54CC2DBA59DE00F7302E /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.18.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 1935FE522D9C3488007C6B6F /* Project object */;
 }
