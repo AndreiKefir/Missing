@@ -53,36 +53,6 @@
 			);
 			target = 1935FE592D9C3488007C6B6F /* Missing */;
 		};
-		199F4F182DB6B3B100F7302E /* Exceptions for "Tests" folder in "MainViewModelTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				DetailViewModelTests.swift,
-				SearchViewModelTests.swift,
-			);
-			target = 198B6A262DAFCC3B00FC6942 /* MainViewModelTests */;
-		};
-		199F4F192DB6B3B100F7302E /* Exceptions for "Tests" folder in "DetailViewModelTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				DetailViewModelTests.swift,
-				Mocks.swift,
-			);
-			target = 199F4F0E2DB6B3A500F7302E /* DetailViewModelTests */;
-		};
-		199F4FC32DB7A10400F7302E /* Exceptions for "Tests" folder in "SearchViewModelTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				SearchViewModelTests.swift,
-			);
-			target = 199F4FB92DB7A0FC00F7302E /* SearchViewModelTests */;
-		};
-		199F50792DB904C600F7302E /* Exceptions for "Missing" folder in "UITests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Constants/AccessibilityIdentifier.swift,
-			);
-			target = 199F50692DB8EE4C00F7302E /* UITests */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -90,18 +60,12 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				1935FE6C2D9C348A007C6B6F /* Exceptions for "Missing" folder in "Missing" target */,
-				199F50792DB904C600F7302E /* Exceptions for "Missing" folder in "UITests" target */,
 			);
 			path = Missing;
 			sourceTree = "<group>";
 		};
 		198B6A282DAFCC3B00FC6942 /* Tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				199F4F182DB6B3B100F7302E /* Exceptions for "Tests" folder in "MainViewModelTests" target */,
-				199F4F192DB6B3B100F7302E /* Exceptions for "Tests" folder in "DetailViewModelTests" target */,
-				199F4FC32DB7A10400F7302E /* Exceptions for "Tests" folder in "SearchViewModelTests" target */,
-			);
 			path = Tests;
 			sourceTree = "<group>";
 		};

@@ -3,21 +3,12 @@
 import Foundation
 import Combine
 
-protocol NetworkProtocol {
-    func createURL(by queries: [URLQueryItem]) throws -> URL
-    func fetchPersons(from url: URL) -> AnyPublisher<Notices, Error>
-    func fetchImageData(from urlString: String) -> AnyPublisher<Data, Error>
-    func fetchPersonDetails(for id: String) -> AnyPublisher<PersonDetails, Error>
-    func fetchPersonImagesLink(for id: String) -> AnyPublisher<PersonImageslink, Error>
-    
-}
-
 enum NetworkError: Error {
     case invalidURL
     case invalidData
 }
 
-class Network: NetworkProtocol {
+class Network {
     static let shared = Network()
     private let session: URLSession
     

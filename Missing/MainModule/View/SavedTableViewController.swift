@@ -87,6 +87,4 @@ class SavedTableViewController: UITableViewController {
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    
-
 }
