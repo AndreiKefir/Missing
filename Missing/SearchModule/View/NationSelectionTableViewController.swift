@@ -28,6 +28,7 @@ class NationSelectionTableViewController: UITableViewController, UISearchResults
         tableView.tableHeaderView = searchController.searchBar
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "countryCell")
+
     }
     
     func updateSearchResults(for searchController: UISearchController) {

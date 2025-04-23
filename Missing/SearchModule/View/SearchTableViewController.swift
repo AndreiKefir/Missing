@@ -19,13 +19,11 @@ class SearchTableViewController: UITableViewController, NationSelectDelegate, UI
     @IBOutlet weak var minAge: UITextField!
     @IBOutlet weak var maxAge: UITextField!
     @IBOutlet weak var nationalityLabel: UILabel!
-    @IBOutlet weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Search"
         
-        setAccessibilityIdentifiers()
         setupBindings()
         
         forename.delegate = self
@@ -42,16 +40,6 @@ class SearchTableViewController: UITableViewController, NationSelectDelegate, UI
         viewModel.genderIndex = genderSegmentControl.selectedSegmentIndex
         let queryItems = viewModel.createSearchQuery()
         delegate?.didUpdateSearchQuery(queryItems)
-    }
-    
-    func setAccessibilityIdentifiers() {
-        forename.accessibilityIdentifier = AccessibilityIdentifier.forenameTextField.rawValue
-        familyName.accessibilityIdentifier = AccessibilityIdentifier.familyNameTextField.rawValue
-        minAge.accessibilityIdentifier = AccessibilityIdentifier.minAgeTextField.rawValue
-        maxAge.accessibilityIdentifier = AccessibilityIdentifier.maxAgeTextField.rawValue
-        genderSegmentControl.accessibilityIdentifier = AccessibilityIdentifier.genderSegmentControl.rawValue
-        nationalityLabel.accessibilityIdentifier = AccessibilityIdentifier.nationalityLabel.rawValue
-        searchButton.accessibilityIdentifier = AccessibilityIdentifier.searchButton.rawValue
     }
     
     private func setupBindings() {

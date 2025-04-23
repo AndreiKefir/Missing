@@ -8,20 +8,10 @@
 import Foundation
 import CoreData
 
-protocol CoreDataManagerProtocol {
-    func createPerson() -> Person
-    func fetchPerson(by id: String) -> Person?
-    func fetchAllPersons() -> [Person]
-    func saveContext()
-    func deletePerson(by id: String)
-}
-
-final class CoreDataManager: CoreDataManagerProtocol {
+final class CoreDataManager {
     static let shared = CoreDataManager()
     
-    var viewContext: NSManagedObjectContext {
-        return persistentContainer.viewContext
-    }
+    private init() {}
 
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "SavedPersons")
@@ -32,8 +22,8 @@ final class CoreDataManager: CoreDataManagerProtocol {
         }
         return container
     }()
-    
-    private init() {}
+
+    var viewContext: NSManagedObjectContext { persistentContainer.viewContext }
 
     func saveContext() {
         let context = viewContext
@@ -47,14 +37,12 @@ final class CoreDataManager: CoreDataManagerProtocol {
             }
         }
     }
-    
-    func createPerson() -> Person {
-        return Person(context: viewContext)
-    }
 
-    func fetchPerson(by id: String) -> Person? {
+    func fetchPerson(by id: String?) -> Person? {
+        guard let id = id else { return nil }
         let request: NSFetchRequest<Person> = Person.fetchRequest()
         request.predicate = NSPredicate(format: "personID == %@", id)
+        request.fetchLimit = 1
         return try? viewContext.fetch(request).first
     }
 
