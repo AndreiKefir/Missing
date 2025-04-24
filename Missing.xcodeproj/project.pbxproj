@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		199F54EC2DBA9EFC00F7302E /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 199F54EB2DBA9EFC00F7302E /* SnapshotTesting */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		198B6A2B2DAFCC3B00FC6942 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -35,6 +39,13 @@
 			remoteGlobalIDString = 1935FE592D9C3488007C6B6F;
 			remoteInfo = Missing;
 		};
+		199F54E12DBA9E3A00F7302E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1935FE522D9C3488007C6B6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1935FE592D9C3488007C6B6F;
+			remoteInfo = Missing;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +54,7 @@
 		199F4F0F2DB6B3A500F7302E /* DetailViewModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DetailViewModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		199F4FBA2DB7A0FC00F7302E /* SearchViewModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchViewModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		199F506A2DB8EE4C00F7302E /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		199F54DD2DBA9E3900F7302E /* SnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -56,6 +68,7 @@
 		199F4F182DB6B3B100F7302E /* Exceptions for "Tests" folder in "MainViewModelTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				SnapshotTests/SearchTableViewControllerSnapshotTests.swift,
 				UITests/UITests.swift,
 				UITests/UITestsLaunchTests.swift,
 				UnitTests/DetailViewModelTests.swift,
@@ -78,18 +91,41 @@
 			);
 			target = 199F4FB92DB7A0FC00F7302E /* SearchViewModelTests */;
 		};
-		199F50792DB904C600F7302E /* Exceptions for "Missing" folder in "UITests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Constants/AccessibilityIdentifier.swift,
-			);
-			target = 199F50692DB8EE4C00F7302E /* UITests */;
-		};
 		199F54D42DBA5A7D00F7302E /* Exceptions for "Tests" folder in "UITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				UITests/UITests.swift,
 				UITests/UITestsLaunchTests.swift,
+			);
+			target = 199F50692DB8EE4C00F7302E /* UITests */;
+		};
+		199F54E92DBA9E6C00F7302E /* Exceptions for "Tests" folder in "SnapshotTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SnapshotTests/SearchTableViewControllerSnapshotTests.swift,
+			);
+			target = 199F54DC2DBA9E3900F7302E /* SnapshotTests */;
+		};
+		199F54EE2DBB7D9F00F7302E /* Exceptions for "Services" folder in "Missing" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AccessibilityIdentifier.swift,
+				Network.swift,
+			);
+			target = 1935FE592D9C3488007C6B6F /* Missing */;
+		};
+		199F54EF2DBB7D9F00F7302E /* Exceptions for "Services" folder in "MainViewModelTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AccessibilityIdentifier.swift,
+				Network.swift,
+			);
+			target = 198B6A262DAFCC3B00FC6942 /* MainViewModelTests */;
+		};
+		199F54F02DBB7DAF00F7302E /* Exceptions for "Services" folder in "UITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AccessibilityIdentifier.swift,
 			);
 			target = 199F50692DB8EE4C00F7302E /* UITests */;
 		};
@@ -100,7 +136,6 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				1935FE6C2D9C348A007C6B6F /* Exceptions for "Missing" folder in "Missing" target */,
-				199F50792DB904C600F7302E /* Exceptions for "Missing" folder in "UITests" target */,
 			);
 			path = Missing;
 			sourceTree = "<group>";
@@ -112,8 +147,19 @@
 				199F4F192DB6B3B100F7302E /* Exceptions for "Tests" folder in "DetailViewModelTests" target */,
 				199F4FC32DB7A10400F7302E /* Exceptions for "Tests" folder in "SearchViewModelTests" target */,
 				199F54D42DBA5A7D00F7302E /* Exceptions for "Tests" folder in "UITests" target */,
+				199F54E92DBA9E6C00F7302E /* Exceptions for "Tests" folder in "SnapshotTests" target */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		199F54ED2DBB7D8200F7302E /* Services */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				199F54EE2DBB7D9F00F7302E /* Exceptions for "Services" folder in "Missing" target */,
+				199F54EF2DBB7D9F00F7302E /* Exceptions for "Services" folder in "MainViewModelTests" target */,
+				199F54F02DBB7DAF00F7302E /* Exceptions for "Services" folder in "UITests" target */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -154,14 +200,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		199F54DA2DBA9E3900F7302E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				199F54EC2DBA9EFC00F7302E /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		1935FE512D9C3488007C6B6F = {
 			isa = PBXGroup;
 			children = (
+				199F54ED2DBB7D8200F7302E /* Services */,
 				1935FE5C2D9C3488007C6B6F /* Missing */,
 				198B6A282DAFCC3B00FC6942 /* Tests */,
+				199F54EA2DBA9EFC00F7302E /* Frameworks */,
 				1935FE5B2D9C3488007C6B6F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -174,8 +230,16 @@
 				199F4F0F2DB6B3A500F7302E /* DetailViewModelTests.xctest */,
 				199F4FBA2DB7A0FC00F7302E /* SearchViewModelTests.xctest */,
 				199F506A2DB8EE4C00F7302E /* UITests.xctest */,
+				199F54DD2DBA9E3900F7302E /* SnapshotTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		199F54EA2DBA9EFC00F7302E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +282,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				198B6A282DAFCC3B00FC6942 /* Tests */,
+				199F54ED2DBB7D8200F7302E /* Services */,
 			);
 			name = MainViewModelTests;
 			packageProductDependencies = (
@@ -286,6 +351,27 @@
 			productReference = 199F506A2DB8EE4C00F7302E /* UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		199F54DC2DBA9E3900F7302E /* SnapshotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 199F54E32DBA9E3A00F7302E /* Build configuration list for PBXNativeTarget "SnapshotTests" */;
+			buildPhases = (
+				199F54D92DBA9E3900F7302E /* Sources */,
+				199F54DA2DBA9E3900F7302E /* Frameworks */,
+				199F54DB2DBA9E3900F7302E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				199F54E22DBA9E3A00F7302E /* PBXTargetDependency */,
+			);
+			name = SnapshotTests;
+			packageProductDependencies = (
+				199F54EB2DBA9EFC00F7302E /* SnapshotTesting */,
+			);
+			productName = SnapshotTests;
+			productReference = 199F54DD2DBA9E3900F7302E /* SnapshotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -315,6 +401,10 @@
 						CreatedOnToolsVersion = 16.3;
 						TestTargetID = 1935FE592D9C3488007C6B6F;
 					};
+					199F54DC2DBA9E3900F7302E = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 1935FE592D9C3488007C6B6F;
+					};
 				};
 			};
 			buildConfigurationList = 1935FE552D9C3488007C6B6F /* Build configuration list for PBXProject "Missing" */;
@@ -339,6 +429,7 @@
 				199F4F0E2DB6B3A500F7302E /* DetailViewModelTests */,
 				199F4FB92DB7A0FC00F7302E /* SearchViewModelTests */,
 				199F50692DB8EE4C00F7302E /* UITests */,
+				199F54DC2DBA9E3900F7302E /* SnapshotTests */,
 			);
 		};
 /* End PBXProject section */
@@ -373,6 +464,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		199F50682DB8EE4C00F7302E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		199F54DB2DBA9E3900F7302E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -417,6 +515,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		199F54D92DBA9E3900F7302E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -439,6 +544,11 @@
 			isa = PBXTargetDependency;
 			target = 1935FE592D9C3488007C6B6F /* Missing */;
 			targetProxy = 199F50702DB8EE4C00F7302E /* PBXContainerItemProxy */;
+		};
+		199F54E22DBA9E3A00F7302E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1935FE592D9C3488007C6B6F /* Missing */;
+			targetProxy = 199F54E12DBA9E3A00F7302E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -812,6 +922,52 @@
 			};
 			name = Release;
 		};
+		199F54E42DBA9E3A00F7302E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4LFHF3R25Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = my.SnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Missing.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Missing";
+			};
+			name = Debug;
+		};
+		199F54E52DBA9E3A00F7302E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4LFHF3R25Y;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = my.SnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Missing.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Missing";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -869,6 +1025,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		199F54E32DBA9E3A00F7302E /* Build configuration list for PBXNativeTarget "SnapshotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				199F54E42DBA9E3A00F7302E /* Debug */,
+				199F54E52DBA9E3A00F7302E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -881,6 +1046,14 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		199F54EB2DBA9EFC00F7302E /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 199F54CC2DBA59DE00F7302E /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1935FE522D9C3488007C6B6F /* Project object */;
 }
