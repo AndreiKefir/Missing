@@ -106,26 +106,10 @@
 			);
 			target = 199F54DC2DBA9E3900F7302E /* SnapshotTests */;
 		};
-		199F54EE2DBB7D9F00F7302E /* Exceptions for "Services" folder in "Missing" target */ = {
+		199F55632DBB884E00F7302E /* Exceptions for "Missing" folder in "UITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				AccessibilityIdentifier.swift,
-				Network.swift,
-			);
-			target = 1935FE592D9C3488007C6B6F /* Missing */;
-		};
-		199F54EF2DBB7D9F00F7302E /* Exceptions for "Services" folder in "MainViewModelTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				AccessibilityIdentifier.swift,
-				Network.swift,
-			);
-			target = 198B6A262DAFCC3B00FC6942 /* MainViewModelTests */;
-		};
-		199F54F02DBB7DAF00F7302E /* Exceptions for "Services" folder in "UITests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				AccessibilityIdentifier.swift,
+				Services/AccessibilityIdentifier.swift,
 			);
 			target = 199F50692DB8EE4C00F7302E /* UITests */;
 		};
@@ -136,6 +120,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				1935FE6C2D9C348A007C6B6F /* Exceptions for "Missing" folder in "Missing" target */,
+				199F55632DBB884E00F7302E /* Exceptions for "Missing" folder in "UITests" target */,
 			);
 			path = Missing;
 			sourceTree = "<group>";
@@ -150,16 +135,6 @@
 				199F54E92DBA9E6C00F7302E /* Exceptions for "Tests" folder in "SnapshotTests" target */,
 			);
 			path = Tests;
-			sourceTree = "<group>";
-		};
-		199F54ED2DBB7D8200F7302E /* Services */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				199F54EE2DBB7D9F00F7302E /* Exceptions for "Services" folder in "Missing" target */,
-				199F54EF2DBB7D9F00F7302E /* Exceptions for "Services" folder in "MainViewModelTests" target */,
-				199F54F02DBB7DAF00F7302E /* Exceptions for "Services" folder in "UITests" target */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -214,7 +189,6 @@
 		1935FE512D9C3488007C6B6F = {
 			isa = PBXGroup;
 			children = (
-				199F54ED2DBB7D8200F7302E /* Services */,
 				1935FE5C2D9C3488007C6B6F /* Missing */,
 				198B6A282DAFCC3B00FC6942 /* Tests */,
 				199F54EA2DBA9EFC00F7302E /* Frameworks */,
@@ -282,7 +256,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				198B6A282DAFCC3B00FC6942 /* Tests */,
-				199F54ED2DBB7D8200F7302E /* Services */,
 			);
 			name = MainViewModelTests;
 			packageProductDependencies = (
